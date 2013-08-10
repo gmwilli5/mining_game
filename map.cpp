@@ -76,6 +76,7 @@ void map_class::render()
             ///test
             //window->get_screen();
             ///on_screen[iii][ooo].render(window->get_screen());
+            ///problem is here all tile types are using the first case in the switch statement
             if(on_screen[iii][ooo].get_type()!=0){cout<<79<<"\n";}
             switch(on_screen[iii][ooo].get_type()){
                 //cout<<on_screen[iii][ooo].get_type()<<"\n";
