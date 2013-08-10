@@ -8,7 +8,7 @@ map_class::map_class(game_class* new_game)
 {
     set_game(new_game);
     int temp;
-    tile_class temp2;
+    tile_class temp2(red,0,0,game->get_surfaces()->get_red());
     for(int iii=0;iii<160;iii++){
         for(int ooo=0;ooo<200;ooo++){
             temp=rand();
@@ -61,7 +61,7 @@ map_class::map_class(game_class* new_game)
     tempsr=SDL_LoadBMP("red.bmp");
     tempsblue=SDL_LoadBMP("blue.bmp");
     tempsblack=SDL_LoadBMP("black.bmp");
-    //cout<<game->get_surfaces()<<"\n";
+    cout<<game->get_surfaces()<<"\n";
 }
 void map_class::set_window(window_class* new_window)
 {
@@ -107,7 +107,7 @@ void map_class::load_whole_onscreen()
 }
 void map_class::sync_tiles()
 {
-    ///figure out how to offset array position to make playr stay in the middle of the screen
+    ///figure out how to offset array position to make player stay in the middle of the screen
     ///copy_vec2(camera_position,&array_position);
     ///might work
     vec2 temp=vec2_init((camera_position.x+50),(camera_position.y+40));
