@@ -112,29 +112,18 @@ void map_class::render()
     }
     for(int iii=0;iii<80;iii++){
         for(int ooo=0;ooo<100;ooo++){
-            ///cout<<on_screen[iii][ooo].get_pixel_pos().x<<","<<on_screen[iii][ooo].get_pixel_pos().y<<"\n";
-            ///cout<<on_screen[iii][ooo].get_position().x<<","<<on_screen[iii][ooo].get_position().y<<"\n";
-            ///test
-            //window->get_screen();
-            ///on_screen[iii][ooo].render(window->get_screen());
             ///problem is here all tile types are using the first case in the switch statement
             ///I can temporerolly provide a solution by added tile pointers after the initialization function I think
             if(on_screen[iii][ooo].get_type()!=0){cout<<79<<"\n";}
             switch(on_screen[iii][ooo].get_type()){
-                //cout<<on_screen[iii][ooo].get_type()<<"\n";
                 case red:
                     on_screen[iii][ooo].render(window->get_screen(),tempsr);
-                    //cout<<79<<"\n";
-                    //on_screen[iii][ooo].set_tile_type(blue);
                     break;
                 case blue:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblue);
-                    //on_screen[iii][ooo].set_tile_type(black);
                     break;
                 case black:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblack);
-                    //on_screen[iii][ooo].set_tile_type(red);
-                    //cout<<86<<"\n";
                     break;
             }
         }
