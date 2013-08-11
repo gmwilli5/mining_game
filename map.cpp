@@ -9,30 +9,35 @@ map_class::map_class(game_class* new_game)
     set_game(new_game);
     int temp;
     tile_class temp2(red,0,0,game->get_surfaces()->get_red());
+    tile_type_class temp_t(0);
     for(int iii=0;iii<160;iii++){
         for(int ooo=0;ooo<200;ooo++){
             temp=rand();
             if(temp%2==0){
             //if(temp<=RAND_MAX/3){
                 //cout<<16<<"\n";
-                temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_red());
+                temp_t.set_type(0);
+                temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_red(),temp_t);
                 ///world[iii][ooo]=new tile_class(red,ooo,iii,game);
             }
             if(temp%3==0){
             //if((temp>RAND_MAX/3)&&temp<=((RAND_MAX/3)+RAND_MAX/3)){
                 //cout<<20<<"\n";
-                temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_blue());
+                temp_t.set_type(1);
+                temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_blue(),temp_t);
                 ///world[iii][ooo]=new tile_class(blue,ooo,iii,game);
             }
             if(temp%4==0){
              //if(temp>((RAND_MAX/3)+RAND_MAX/3)){
                  //cout<<24<<"\n";
-                 temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
+                 temp_t.set_type(2);
+                 temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black(),temp_t);
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
             }
             else{
                 //cout<<28<<"\n";
-                temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
+                temp_t.set_type(2);
+                temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black(),temp_t);
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
             }
             /*if((temp%3)<3){
@@ -116,13 +121,13 @@ void map_class::render()
             ///I can temporerolly provide a solution by added tile pointers after the initialization function I think
             if(on_screen[iii][ooo].get_type()!=0){cout<<79<<"\n";}
             switch(on_screen[iii][ooo].get_type()){
-                case red:
+                case 0:
                     on_screen[iii][ooo].render(window->get_screen(),tempsr);
                     break;
-                case blue:
+                case 1:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblue);
                     break;
-                case black:
+                case 2:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblack);
                     break;
             }
