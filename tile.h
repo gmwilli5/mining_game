@@ -35,6 +35,7 @@ class tile_class{
         void render(SDL_Surface* screen);
         void set_game(game_class* new_game);
         void set_tile_type(tile_type new_type);
+        void set_tile_type(int new_type);
         void set_position(int x,int y);
         void set_pixel_pos(vec2 new_pos);
         void set_pixel_pos(int x,int y);

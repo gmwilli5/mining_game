@@ -17,6 +17,7 @@ class game_class{
         tile_surfaces* surfaces;
     public:
         game_class();
+        ~game_class();
         void loop();
         void render();
         void events(SDL_Event* event);

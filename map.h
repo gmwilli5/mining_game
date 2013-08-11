@@ -44,6 +44,7 @@ class map_class{
     public:
         map_class(game_class* new_game);
         void render();
+        void render_test();
         void set_window(window_class* new_window);
         void set_game(game_class* new_game);
         friend void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination );

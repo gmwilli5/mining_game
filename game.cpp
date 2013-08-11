@@ -25,7 +25,7 @@ game_class::game_class()
     cout<<surfaces->get_red()<<"\n";
     ///testing
     ///insert_loop();
-    void insert_loop();
+    ///void insert_loop();
     map=new map_class(this);
     map->set_window(&window);
     srand(time(0));
@@ -36,4 +36,9 @@ game_class::game_class()
 tile_surfaces* game_class::get_surfaces()
 {
     return surfaces;
+}
+game_class::~game_class()
+{
+    delete map;
+    delete surfaces;
 }

@@ -267,3 +267,7 @@ int tile_class::get_type(int o)
 {
     return test_type.get_type(o);
 }
+void tile_class::set_tile_type(int new_type)
+{
+    test_type.set_type(new_type);
+}
