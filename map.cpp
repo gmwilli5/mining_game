@@ -18,11 +18,16 @@ map_class::map_class(game_class* new_game)
                 //cout<<16<<"\n";
                 temp_t.set_type(0);
                 temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_red(),temp_t);
+                cout<<temp_t.get_type(0)<<"\n";
                 ///world[iii][ooo]=new tile_class(red,ooo,iii,game);
             }
             if(temp%3==0){
             //if((temp>RAND_MAX/3)&&temp<=((RAND_MAX/3)+RAND_MAX/3)){
                 //cout<<20<<"\n";
+                temp_t.set_type(1);
+                cout<<temp_t.get_type(0)<<"\n";
+                //int o;
+                //std::cin>>o;
                 temp_t.set_type(1);
                 temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_blue(),temp_t);
                 ///world[iii][ooo]=new tile_class(blue,ooo,iii,game);
@@ -31,12 +36,14 @@ map_class::map_class(game_class* new_game)
              //if(temp>((RAND_MAX/3)+RAND_MAX/3)){
                  //cout<<24<<"\n";
                  temp_t.set_type(2);
+                 cout<<temp_t.get_type(0)<<"\n";
                  temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black(),temp_t);
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
             }
             else{
                 //cout<<28<<"\n";
                 temp_t.set_type(2);
+                cout<<temp_t.get_type(0)<<"\n";
                 temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black(),temp_t);
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
             }
@@ -80,28 +87,32 @@ void map_class::randomize_tiles()
         for(int ooo=0;ooo<200;ooo++){
             temp=rand();
             if(temp%2==0){
-                world[iii][ooo].set_tile_type(red);
+                world[iii][ooo].set_tile_type(0);
+                //world[iii][ooo].set_tile_type(red);
             //if(temp<=RAND_MAX/3){
                 //cout<<16<<"\n";
                 //temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_red());
                 ///world[iii][ooo]=new tile_class(red,ooo,iii,game);
             }
             if(temp%3==0){
-                world[iii][ooo].set_tile_type(blue);
+                world[iii][ooo].set_tile_type(1);
+                //world[iii][ooo].set_tile_type(blue);
             //if((temp>RAND_MAX/3)&&temp<=((RAND_MAX/3)+RAND_MAX/3)){
                 //cout<<20<<"\n";
                 //temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_blue());
                 ///world[iii][ooo]=new tile_class(blue,ooo,iii,game);
             }
             if(temp%4==0){
-                world[iii][ooo].set_tile_type(black);
+                world[iii][ooo].set_tile_type(2);
+                //world[iii][ooo].set_tile_type(black);
              //if(temp>((RAND_MAX/3)+RAND_MAX/3)){
                  //cout<<24<<"\n";
                  //temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
             }
             else{
-                world[iii][ooo].set_tile_type(black);
+                world[iii][ooo].set_tile_type(2);
+                //world[iii][ooo].set_tile_type(black);
                 //cout<<28<<"\n";
                 //temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
                 ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
@@ -120,14 +131,17 @@ void map_class::render()
             ///problem is here all tile types are using the first case in the switch statement
             ///I can temporerolly provide a solution by added tile pointers after the initialization function I think
             if(on_screen[iii][ooo].get_type()!=0){cout<<79<<"\n";}
-            switch(on_screen[iii][ooo].get_type()){
+            switch(on_screen[iii][ooo].get_type(0)){
                 case 0:
+                    cout<<on_screen[iii][ooo].get_type(0)<<"\n";
                     on_screen[iii][ooo].render(window->get_screen(),tempsr);
                     break;
                 case 1:
+                    cout<<on_screen[iii][ooo].get_type(0)<<"\n";
                     on_screen[iii][ooo].render(window->get_screen(),tempsblue);
                     break;
                 case 2:
+                    cout<<on_screen[iii][ooo].get_type(0)<<"\n";
                     on_screen[iii][ooo].render(window->get_screen(),tempsblack);
                     break;
             }

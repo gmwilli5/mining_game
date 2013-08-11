@@ -64,6 +64,17 @@ tile_class::tile_class(tile_type new_type,int x,int y,SDL_Surface* new_surf)
     load_tile();
     sync_position();
 }
+tile_class::tile_class(tile_type new_type,int x,int y,SDL_Surface* new_surf,tile_type_class new_test_type)
+{
+    tile=NULL;
+    type=new_type;
+    tile=new_surf;
+    position=vec2_init(x,y);
+    pixel_pos=vec2_init(0,0);
+    test_type=new_test_type;
+    load_tile();
+    sync_position();
+}
 void tile_class::set_tile_type(tile_type new_type)
 {
     type=new_type;
@@ -185,7 +196,7 @@ void tile_class::set_pixel_pos(vec2 new_pos)
 }
 void tile_class::re_innit(tile_type new_type,int x,int y,game_class* new_game)
 {
-    tile=NULL;
+    //tile=NULL;
     type=new_type;
     position=vec2_init(x,y);
     pixel_pos=vec2_init(0,0);
@@ -196,7 +207,7 @@ void tile_class::re_innit(tile_type new_type,int x,int y,game_class* new_game)
 }
 void tile_class::re_innit(tile_type new_type,int x,int y,tile_surfaces* new_surf)
 {
-    tile=NULL;
+    //tile=NULL;
     type=new_type;
     surfaces=new_surf;
     position=vec2_init(x,y);
@@ -218,6 +229,17 @@ void tile_class::re_innit(tile_type new_type,int x,int y,SDL_Surface* new_surf)
     sync_position();
     changed=true;
 }
+void tile_class::re_innit(tile_type new_type,int x,int y,SDL_Surface* new_surf,tile_type_class new_test_type)
+{
+    //tile=NULL;
+    type=new_type;
+    tile=new_surf;
+    position=vec2_init(x,y);
+    pixel_pos=vec2_init(0,0);
+    test_type=new_test_type;
+    load_tile();
+    sync_position();
+}
 void tile_class::sync_position()
 {
     change_vec2(&pixel_pos,(position.x*10),(position.y*10));
@@ -236,5 +258,12 @@ void tile_class::set_position(int x,int y)
 }
 tile_type tile_class::get_type()
 {
-    return type;
+    ///non class type
+    ///return type;
+    //cout<<test_type.get_type()<<"\n";
+    return test_type.get_type();
+}
+int tile_class::get_type(int o)
+{
+    return test_type.get_type(o);
 }
