@@ -30,6 +30,8 @@ class map_class{
         SDL_Surface* tempsblack;
         tile_surfaces t;
         game_class* game;
+        bool re_innit;
+        void randomize_tiles();
         ///syncs the camera position with the postition of the player in the world
         ///internal class use only
         ///called in update function

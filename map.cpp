@@ -61,14 +61,55 @@ map_class::map_class(game_class* new_game)
     tempsr=SDL_LoadBMP("red.bmp");
     tempsblue=SDL_LoadBMP("blue.bmp");
     tempsblack=SDL_LoadBMP("black.bmp");
+    re_innit=true;
     cout<<game->get_surfaces()<<"\n";
 }
 void map_class::set_window(window_class* new_window)
 {
     window=new_window;
 }
+void map_class::randomize_tiles()
+{
+    int temp;
+    for(int iii=0;iii<160;iii++){
+        for(int ooo=0;ooo<200;ooo++){
+            temp=rand();
+            if(temp%2==0){
+                world[iii][ooo].set_tile_type(red);
+            //if(temp<=RAND_MAX/3){
+                //cout<<16<<"\n";
+                //temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_red());
+                ///world[iii][ooo]=new tile_class(red,ooo,iii,game);
+            }
+            if(temp%3==0){
+                world[iii][ooo].set_tile_type(blue);
+            //if((temp>RAND_MAX/3)&&temp<=((RAND_MAX/3)+RAND_MAX/3)){
+                //cout<<20<<"\n";
+                //temp2.re_innit(blue,ooo,iii,game->get_surfaces()->get_blue());
+                ///world[iii][ooo]=new tile_class(blue,ooo,iii,game);
+            }
+            if(temp%4==0){
+                world[iii][ooo].set_tile_type(black);
+             //if(temp>((RAND_MAX/3)+RAND_MAX/3)){
+                 //cout<<24<<"\n";
+                 //temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
+                ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
+            }
+            else{
+                world[iii][ooo].set_tile_type(black);
+                //cout<<28<<"\n";
+                //temp2.re_innit(black,ooo,iii,game->get_surfaces()->get_black());
+                ///world[iii][ooo]=new tile_class(black,ooo,iii,game);
+            }
+        }
+    }
+}
 void map_class::render()
 {
+    if(re_innit==true){
+        randomize_tiles();
+        re_innit=false;
+    }
     for(int iii=0;iii<80;iii++){
         for(int ooo=0;ooo<100;ooo++){
             ///cout<<on_screen[iii][ooo].get_pixel_pos().x<<","<<on_screen[iii][ooo].get_pixel_pos().y<<"\n";
@@ -84,15 +125,15 @@ void map_class::render()
                 case red:
                     on_screen[iii][ooo].render(window->get_screen(),tempsr);
                     //cout<<79<<"\n";
-                    on_screen[iii][ooo].set_tile_type(blue);
+                    //on_screen[iii][ooo].set_tile_type(blue);
                     break;
                 case blue:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblue);
-                    on_screen[iii][ooo].set_tile_type(black);
+                    //on_screen[iii][ooo].set_tile_type(black);
                     break;
                 case black:
                     on_screen[iii][ooo].render(window->get_screen(),tempsblack);
-                    on_screen[iii][ooo].set_tile_type(red);
+                    //on_screen[iii][ooo].set_tile_type(red);
                     //cout<<86<<"\n";
                     break;
             }
