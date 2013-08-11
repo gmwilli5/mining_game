@@ -11,7 +11,7 @@ void copy_vec2(vec2 source,vec2* dest);
 vec2 operator+(vec2,vec2);
 ///filled with pointers to surfaces loaded with tile images
 ///changed to class
-/*struct tile_surfaces{
+/*struct tile_surfaces_struct{
     SDL_Surface* red;
     SDL_Surface* blue;
     SDL_Surface* black;
