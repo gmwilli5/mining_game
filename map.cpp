@@ -194,15 +194,15 @@ void map_class::set_game(game_class* new_game)
 ///todo number 4
 void map_class::render_test()
 {
-    SDL_Surface* red1=SDL_LoadBMP("red");
-    SDL_Surface* blue1=SDL_LoadBMP("blue");
-    SDL_Surface* black1=SDL_LoadBMP("black");
+    SDL_Surface* red1=SDL_LoadBMP("red.bmp");
+    SDL_Surface* blue1=SDL_LoadBMP("blue.bmp");
+    SDL_Surface* black1=SDL_LoadBMP("black.bmp");
     tile_type_class t(0);
     tile_class r(blue,0,0,game->get_surfaces()->get_blue(),t);
     t.set_type(1);
-    tile_class bu(blue,1,0,game->get_surfaces()->get_blue(),t);
+    tile_class bu(blue,10,0,game->get_surfaces()->get_blue(),t);
     t.set_type(2);
-    tile_class ba(blue,2,0,game->get_surfaces()->get_blue(),t);
+    tile_class ba(blue,200,0,game->get_surfaces()->get_blue(),t);
     r.render(window->get_screen(),red1);
     bu.render(window->get_screen(),blue1);
     ba.render(window->get_screen(),black1);
