@@ -197,16 +197,20 @@ void map_class::render_test()
     SDL_Surface* red1=SDL_LoadBMP("red.bmp");
     SDL_Surface* blue1=SDL_LoadBMP("blue.bmp");
     SDL_Surface* black1=SDL_LoadBMP("black.bmp");
+    SDL_Surface* enemy1=SDL_LoadBMP("enemy.bmp");
     tile_type_class t(0);
     tile_class r(blue,0,0,game->get_surfaces()->get_blue(),t);
     t.set_type(1);
     tile_class bu(blue,10,0,game->get_surfaces()->get_blue(),t);
     t.set_type(2);
-    tile_class ba(blue,200,0,game->get_surfaces()->get_blue(),t);
+    tile_class ba(blue,20,0,game->get_surfaces()->get_blue(),t);
+    tile_class e(blue,30,0,game->get_surfaces()->get_blue(),t);
     r.render(window->get_screen(),red1);
     bu.render(window->get_screen(),blue1);
     ba.render(window->get_screen(),black1);
+    e.render(window->get_screen(),enemy1);
     SDL_FreeSurface(red1);
     SDL_FreeSurface(blue1);
     SDL_FreeSurface(black1);
+    SDL_FreeSurface(enemy1);
 }
